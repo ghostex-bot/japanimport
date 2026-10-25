@@ -159,9 +159,12 @@ h2{font-variation-settings:"wdth" 110;font-weight:800;font-size:clamp(1.8rem,4vw
   background:var(--paper);color:var(--ink);
 }
 .form textarea{min-height:110px;resize:vertical}
-.form .ok{display:none;color:var(--ink);font-weight:600}
+.form .ok,.form .err{display:none;font-weight:600}
+.form .ok{color:var(--ink)}
+.form .err{color:var(--red)}
 .form.sent .ok{display:block}
-.form.sent button{display:none}
+.form.err .err{display:block}
+.form.sent button,.form.sent label{display:none}
 .form button{font:inherit}
 
 .imp{display:grid;gap:1.2rem;max-width:60ch;color:var(--ink-2)}
@@ -301,14 +304,17 @@ footer{border-top:1px solid var(--line);padding:2rem 0 2.5rem;color:var(--ink-2)
         </dl>
         <div class="wa"><a class="btn red" href="https://wa.me/41792546339" data-i18n="ct_wa"></a></div>
       </div>
-      <div class="form" id="form">
-        <label><span data-i18n="fo_name"></span><input type="text" autocomplete="name"></label>
-        <label><span data-i18n="fo_mail"></span><input type="email" autocomplete="email"></label>
-        <label><span data-i18n="fo_car"></span><input type="text"></label>
-        <label><span data-i18n="fo_msg"></span><textarea></textarea></label>
-        <button class="btn primary" type="button" id="send" data-i18n="fo_send"></button>
+      <form class="form" id="form" name="kontakt" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="kontakt">
+        <p hidden><label>Nicht ausfüllen: <input name="bot-field"></label></p>
+        <label><span data-i18n="fo_name"></span><input type="text" name="name" autocomplete="name" required></label>
+        <label><span data-i18n="fo_mail"></span><input type="email" name="email" autocomplete="email" required></label>
+        <label><span data-i18n="fo_car"></span><input type="text" name="auto"></label>
+        <label><span data-i18n="fo_msg"></span><textarea name="nachricht"></textarea></label>
+        <button class="btn primary" type="submit" id="send" data-i18n="fo_send"></button>
         <p class="ok" data-i18n="fo_ok"></p>
-      </div>
+        <p class="err" data-i18n="fo_err"></p>
+      </form>
     </div>
   </section>
 
@@ -360,7 +366,7 @@ const T = {
     ct_op:"Betreiber", ct_op_v:"Lorin Schmutz – seit 2020 im Handel mit Exoten und Sportwagen", ct_mail:"Mail", ct_phone:"Telefon", ct_addr:"Adresse", ct_hours:"Besichtigung", ct_hours_v:"Nur mit Voranmeldung, auch Randzeiten",
     ct_wa:"Per WhatsApp schreiben", wa_float:"WhatsApp",
     fo_name:"Name", fo_mail:"E-Mail", fo_car:"Welches Auto suchst du?", fo_msg:"Nachricht", fo_send:"Anfrage senden",
-    fo_ok:"Danke – wir melden uns innert 24 Stunden.",
+    fo_ok:"Danke – wir melden uns innert 24 Stunden.", fo_err:"Senden fehlgeschlagen – bitte per WhatsApp oder Mail melden.",
     im_h:"Impressum", im_p:"Japan Import ist eine Marke von Exotic Cars Schmutz, Einzelfirma mit Sitz in Liesberg BL, aktiv seit 2020. Verantwortlich für den Inhalt dieser Webseite: Lorin Schmutz.",
     ft_l:"© 2026 Japan Import · eine Marke von Exotic Cars Schmutz, seit 2020", ft_imp:"Impressum",
     ft:"Deutsch · English"
@@ -393,7 +399,7 @@ const T = {
     ct_op:"Operated by", ct_op_v:"Lorin Schmutz – trading exotic and sports cars since 2020", ct_mail:"Email", ct_phone:"Phone", ct_addr:"Address", ct_hours:"Viewings", ct_hours_v:"By appointment only, off-hours possible",
     ct_wa:"Message on WhatsApp", wa_float:"WhatsApp",
     fo_name:"Name", fo_mail:"Email", fo_car:"Which car are you looking for?", fo_msg:"Message", fo_send:"Send enquiry",
-    fo_ok:"Thanks – we’ll get back to you within 24 hours.",
+    fo_ok:"Thanks – we’ll get back to you within 24 hours.", fo_err:"Sending failed – please reach us via WhatsApp or email.",
     im_h:"Legal notice", im_p:"Japan Import is a brand of Exotic Cars Schmutz, a sole proprietorship based in Liesberg BL, Switzerland, active since 2020. Responsible for the content of this website: Lorin Schmutz.",
     ft_l:"© 2026 Japan Import · a brand of Exotic Cars Schmutz, since 2020", ft_imp:"Legal notice",
     ft:"Deutsch · English"
@@ -417,8 +423,16 @@ document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{
   document.querySelectorAll(".car").forEach(car=>car.classList.toggle("hidden", f!=="all" && car.dataset.origin!==f));
 }));
 
-document.getElementById("send").addEventListener("click",()=>{
-  document.getElementById("form").classList.add("sent");
+const form=document.getElementById("form");
+form.addEventListener("submit",async e=>{
+  e.preventDefault();
+  form.classList.remove("err");
+  const btn=document.getElementById("send"); btn.disabled=true;
+  try{
+    const r=await fetch("/",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(new FormData(form)).toString()});
+    if(!r.ok) throw new Error(r.status);
+    form.classList.add("sent");
+  }catch(err){ form.classList.add("err"); btn.disabled=false; }
 });
 </script>
 </body>
