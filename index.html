@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Japan Import – Sportwagen aus Japan, direkt in die Schweiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF1F4;
+  --paper-2:#FFFFFF;
+  --ink:#1C2430;
+  --ink-2:#5B6775;
+  --line:#CDD3DA;
+  --red:#C8102E;
+  --red-ink:#FFFFFF;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#161B24;
+    --paper-2:#1F2631;
+    --ink:#EEF1F4;
+    --ink-2:#A3ADB8;
+    --line:#333C49;
+    --red:#E0243F;
+    --red-ink:#FFFFFF;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#161B24;--paper-2:#1F2631;--ink:#EEF1F4;--ink-2:#A3ADB8;--line:#333C49;--red:#E0243F;--red-ink:#FFFFFF;
+}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+  font-variation-settings:"wdth" 100;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+
+/* header */
+header{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:9;
+  background:var(--paper);border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:1rem}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:800;font-size:1.05rem;letter-spacing:-.01em}
+.brand .dot{width:18px;height:18px;border-radius:50%;background:var(--red);flex:none}
+.nav ul{display:none;list-style:none;gap:1.6rem}
+.nav ul a{text-decoration:none;font-weight:500;color:var(--ink-2)}
+.nav ul a:hover{color:var(--ink)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{
+  border:0;background:transparent;color:var(--ink-2);font:inherit;font-weight:600;
+  padding:.35rem .75rem;cursor:pointer;
+}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.lang button:focus-visible,a:focus-visible,.btn:focus-visible,.chip:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+@media (min-width:820px){.nav ul{display:flex}}
+
+/* hero */
+.hero{padding:3.5rem 0 3rem;position:relative;overflow:hidden}
+.hero .sun{
+  position:absolute;right:-12vw;top:-6rem;width:min(60vw,560px);aspect-ratio:1;border-radius:50%;
+  background:var(--red);opacity:.95;pointer-events:none;
+}
+.hero h1{
+  position:relative;
+  font-variation-settings:"wdth" 112;
+  font-weight:900;line-height:.95;letter-spacing:-.02em;
+  font-size:clamp(2.6rem,8.5vw,6.4rem);
+  max-width:12ch;
+}
+.hero p.lead{position:relative;margin-top:1.4rem;max-width:44ch;font-size:1.125rem;color:var(--ink-2)}
+.hero .cta{position:relative;margin-top:1.8rem;display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{
+  display:inline-block;text-decoration:none;font-weight:700;padding:.85rem 1.3rem;border-radius:6px;
+  border:2px solid var(--ink);color:var(--ink);background:transparent;
+}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.red{background:var(--red);border-color:var(--red);color:var(--red-ink)}
+.facts{position:relative;margin-top:2.6rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem 2rem;max-width:620px}
+.facts div{border-top:2px solid var(--ink);padding-top:.6rem}
+.facts b{display:block;font-size:1.35rem;font-weight:800;letter-spacing:-.01em}
+.facts span{color:var(--ink-2);font-size:.95rem}
+@media (min-width:820px){.hero{padding:5.5rem 0 4.5rem}.facts{grid-template-columns:repeat(4,1fr)}}
+
+/* sections */
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2{font-variation-settings:"wdth" 110;font-weight:800;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em;line-height:1.05}
+.sub{color:var(--ink-2);margin-top:.5rem;max-width:56ch}
+.head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.8rem}
+
+/* listings */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{border:1px solid var(--line);background:var(--paper-2);color:var(--ink);font:inherit;font-weight:600;font-size:.9rem;padding:.4rem .8rem;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.cars{display:grid;gap:1.25rem;grid-template-columns:1fr}
+@media (min-width:640px){.cars{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.cars{grid-template-columns:repeat(3,1fr)}}
+.car{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.car.hidden{display:none}
+.car .img{aspect-ratio:4/3;background:linear-gradient(160deg,var(--line),var(--paper));position:relative;display:grid;place-items:center;color:var(--ink-2);font-weight:600}
+.car .img .tag{position:absolute;left:.75rem;top:.75rem;background:var(--red);color:var(--red-ink);font-size:.75rem;font-weight:700;padding:.25rem .55rem;border-radius:4px}
+.car .img .tag.eu{background:var(--ink);color:var(--paper)}
+.car .body{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.car h3{font-size:1.2rem;font-weight:800;letter-spacing:-.01em;line-height:1.15}
+.car .spec{display:flex;flex-wrap:wrap;gap:.4rem .9rem;color:var(--ink-2);font-size:.92rem}
+.car .price{margin-top:auto;padding-top:.6rem;display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line)}
+.car .price b{font-size:1.15rem;font-weight:800}
+.car .price a{font-weight:600;font-size:.92rem}
+.note{margin-top:1.4rem;color:var(--ink-2);font-size:.92rem;max-width:60ch}
+
+/* steps */
+.steps{display:grid;gap:1.5rem;counter-reset:step}
+@media (min-width:820px){.steps{grid-template-columns:repeat(2,1fr)}}
+.step{display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:start}
+.step::before{
+  counter-increment:step;content:counter(step);
+  width:3rem;height:3rem;border-radius:50%;background:var(--red);color:var(--red-ink);
+  display:grid;place-items:center;font-weight:800;font-size:1.2rem;
+}
+.step h3{font-size:1.15rem;font-weight:800;margin-bottom:.25rem}
+.step p{color:var(--ink-2)}
+
+/* why */
+.why{display:grid;gap:1.25rem}
+@media (min-width:820px){.why{grid-template-columns:repeat(3,1fr)}}
+.why div{border-left:3px solid var(--red);padding-left:1rem}
+.why h3{font-size:1.1rem;font-weight:800;margin-bottom:.3rem}
+.why p{color:var(--ink-2)}
+
+/* contact */
+.contact{display:grid;gap:2rem}
+@media (min-width:820px){.contact{grid-template-columns:1.1fr .9fr}}
+.contact dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.2rem;margin-top:1.2rem}
+.contact dt{color:var(--ink-2)}
+.contact dd a{font-weight:600}
+.wa{margin-top:1.5rem}
+.form{background:var(--paper-2);border:1px solid var(--line);border-radius:10px;padding:1.4rem;display:grid;gap:.9rem}
+.form label{display:grid;gap:.3rem;font-weight:600;font-size:.92rem}
+.form input,.form textarea{
+  font:inherit;padding:.7rem .8rem;border:1px solid var(--line);border-radius:6px;
+  background:var(--paper);color:var(--ink);
+}
+.form textarea{min-height:110px;resize:vertical}
+.form .ok{display:none;color:var(--ink);font-weight:600}
+.form.sent .ok{display:block}
+.form.sent button{display:none}
+.form button{font:inherit}
+
+.imp{display:grid;gap:1.2rem;max-width:60ch;color:var(--ink-2)}
+.imp b{color:var(--ink)}
+.imp a{font-weight:600;color:var(--ink)}
+footer a{text-decoration:none;font-weight:600}
+footer{border-top:1px solid var(--line);padding:2rem 0 2.5rem;color:var(--ink-2);font-size:.9rem;display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>Japan Import</a>
+    <ul>
+      <li><a href="#angebote" data-i18n="nav_cars"></a></li>
+      <li><a href="#ablauf" data-i18n="nav_process"></a></li>
+      <li><a href="#warum" data-i18n="nav_why"></a></li>
+      <li><a href="#kontakt" data-i18n="nav_contact"></a></li>
+    </ul>
+    <div class="lang" role="group" aria-label="Sprache / Language">
+      <button type="button" data-lang="de" aria-pressed="true">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="border-top:0">
+    <div class="sun" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1 data-i18n="h1"></h1>
+      <p class="lead" data-i18n="lead"></p>
+      <div class="cta">
+        <a class="btn primary" href="#angebote" data-i18n="cta_cars"></a>
+        <a class="btn" href="#kontakt" data-i18n="cta_search"></a>
+      </div>
+      <div class="facts">
+        <div><b data-i18n="f1b"></b><span data-i18n="f1s"></span></div>
+        <div><b data-i18n="f2b"></b><span data-i18n="f2s"></span></div>
+        <div><b data-i18n="f3b"></b><span data-i18n="f3s"></span></div>
+        <div><b data-i18n="f4b"></b><span data-i18n="f4s"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="angebote">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <h2 data-i18n="cars_h"></h2>
+          <p class="sub" data-i18n="cars_sub"></p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter">
+          <button class="chip" type="button" data-filter="all" aria-pressed="true" data-i18n="fl_all"></button>
+          <button class="chip" type="button" data-filter="jp" aria-pressed="false" data-i18n="fl_jp"></button>
+          <button class="chip" type="button" data-filter="eu" aria-pressed="false" data-i18n="fl_eu"></button>
+        </div>
+      </div>
+
+      <div class="cars" id="cars">
+        <article class="car" data-origin="jp">
+          <div class="img"><span class="tag" data-i18n="tag_jp"></span><span data-i18n="img_ph"></span></div>
+          <div class="body">
+            <h3>McLaren 600LT Spider</h3>
+            <div class="spec"><span>2020</span><span>8’900 km</span><span>600 PS</span><span data-i18n="sp_lhd"></span></div>
+            <div class="price"><b data-i18n="poa"></b><a href="#kontakt" data-i18n="ask"></a></div>
+          </div>
+        </article>
+        <article class="car" data-origin="jp">
+          <div class="img"><span class="tag" data-i18n="tag_jp"></span><span data-i18n="img_ph"></span></div>
+          <div class="body">
+            <h3>Ferrari 488 GTB</h3>
+            <div class="spec"><span>2017</span><span>14’200 km</span><span>670 PS</span><span data-i18n="sp_lhd"></span></div>
+            <div class="price"><b data-i18n="poa"></b><a href="#kontakt" data-i18n="ask"></a></div>
+          </div>
+        </article>
+        <article class="car" data-origin="eu">
+          <div class="img"><span class="tag eu" data-i18n="tag_eu"></span><span data-i18n="img_ph"></span></div>
+          <div class="body">
+            <h3>Porsche 911 GT3 (997.2)</h3>
+            <div class="spec"><span>2010</span><span>41’000 km</span><span>435 PS</span><span data-i18n="sp_manual"></span></div>
+            <div class="price"><b data-i18n="poa"></b><a href="#kontakt" data-i18n="ask"></a></div>
+          </div>
+        </article>
+      </div>
+      <p class="note" data-i18n="cars_note"></p>
+    </div>
+  </section>
+
+  <section id="ablauf">
+    <div class="wrap">
+      <div class="head"><div><h2 data-i18n="pr_h"></h2><p class="sub" data-i18n="pr_sub"></p></div></div>
+      <div class="steps">
+        <div class="step"><div><h3 data-i18n="s1h"></h3><p data-i18n="s1p"></p></div></div>
+        <div class="step"><div><h3 data-i18n="s2h"></h3><p data-i18n="s2p"></p></div></div>
+        <div class="step"><div><h3 data-i18n="s3h"></h3><p data-i18n="s3p"></p></div></div>
+        <div class="step"><div><h3 data-i18n="s4h"></h3><p data-i18n="s4p"></p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="warum">
+    <div class="wrap">
+      <div class="head"><div><h2 data-i18n="wh_h"></h2></div></div>
+      <div class="why">
+        <div><h3 data-i18n="w1h"></h3><p data-i18n="w1p"></p></div>
+        <div><h3 data-i18n="w2h"></h3><p data-i18n="w2p"></p></div>
+        <div><h3 data-i18n="w3h"></h3><p data-i18n="w3p"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap contact">
+      <div>
+        <h2 data-i18n="ct_h"></h2>
+        <p class="sub" data-i18n="ct_sub"></p>
+        <dl>
+          <dt data-i18n="ct_op"></dt><dd><b>Exotic Cars Schmutz</b><br><span data-i18n="ct_op_v"></span></dd>
+          <dt data-i18n="ct_mail"></dt><dd><a href="mailto:exoticcars.ch@gmail.com">exoticcars.ch@gmail.com</a></dd>
+          <dt data-i18n="ct_phone"></dt><dd><a href="tel:+41792546339">079 254 63 39</a></dd>
+          <dt data-i18n="ct_addr"></dt><dd>Delsbergstrasse 17a<br>4253 Liesberg, Schweiz</dd>
+          <dt data-i18n="ct_hours"></dt><dd data-i18n="ct_hours_v"></dd>
+        </dl>
+        <div class="wa"><a class="btn red" href="https://wa.me/41792546339" data-i18n="ct_wa"></a></div>
+      </div>
+      <div class="form" id="form">
+        <label><span data-i18n="fo_name"></span><input type="text" autocomplete="name"></label>
+        <label><span data-i18n="fo_mail"></span><input type="email" autocomplete="email"></label>
+        <label><span data-i18n="fo_car"></span><input type="text"></label>
+        <label><span data-i18n="fo_msg"></span><textarea></textarea></label>
+        <button class="btn primary" type="button" id="send" data-i18n="fo_send"></button>
+        <p class="ok" data-i18n="fo_ok"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="impressum">
+    <div class="wrap">
+      <div class="head"><div><h2 data-i18n="im_h"></h2></div></div>
+      <div class="imp">
+        <p><b>Exotic Cars Schmutz</b><br>Lorin Schmutz<br>Delsbergstrasse 17a<br>4253 Liesberg<br>Schweiz</p>
+        <p><a href="mailto:exoticcars.ch@gmail.com">exoticcars.ch@gmail.com</a><br><a href="tel:+41792546339">079 254 63 39</a></p>
+        <p data-i18n="im_p"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <span data-i18n="ft_l"></span>
+  <span><a href="#impressum" data-i18n="ft_imp"></a> · <span data-i18n="ft"></span></span>
+</footer>
+
+<script>
+const T = {
+  de: {
+    nav_cars:"Angebote", nav_process:"Ablauf", nav_why:"Warum Japan", nav_contact:"Kontakt",
+    h1:"Sportwagen aus Japan. Direkt in die Schweiz.",
+    lead:"Ferrari, McLaren, Porsche und mehr – aus dem japanischen Markt, wo die Autos wenig Kilometer haben und sauber gepflegt sind. Wir holen sie, erledigen Zoll und MFK und übergeben sie dir fahrbereit mit Schweizer Nummern.",
+    cta_cars:"Angebote ansehen", cta_search:"Wunschauto suchen lassen",
+    f1b:"Japan + Europa", f1s:"Herkunft der Fahrzeuge",
+    f2b:"Alles inklusive", f2s:"Transport, Zoll, MFK",
+    f3b:"Eintausch", f3s:"Dein Auto nehmen wir in Zahlung",
+    f4b:"Seit 2020", f4s:"Exotic Cars Schmutz, Liesberg BL",
+    cars_h:"Aktuelle Angebote", cars_sub:"Alle Fahrzeuge verzollt und mit Schweizer MFK. Preise auf Anfrage.",
+    fl_all:"Alle", fl_jp:"Aus Japan", fl_eu:"Aus Europa",
+    tag_jp:"Japan-Import", tag_eu:"EU", img_ph:"Foto folgt",
+    sp_lhd:"Linkslenker", sp_manual:"Handschalter",
+    poa:"Preis auf Anfrage", ask:"Anfragen",
+    cars_note:"Nicht dabei, was du suchst? Wir haben Zugriff auf die grossen Auktionen und Händler in Japan. Sag uns, was du willst – wir finden es.",
+    pr_h:"So läuft ein Import ab", pr_sub:"Vier Schritte, du musst dich um nichts kümmern.",
+    s1h:"Auto finden", s1p:"Du sagst uns Modell, Budget und Wünsche. Wir suchen in Japan und Europa und zeigen dir konkrete Fahrzeuge mit Historie und Zustandsbericht.",
+    s2h:"Prüfen und kaufen", s2p:"Vor dem Kauf wird das Auto vor Ort begutachtet. Erst wenn alles passt, kaufen wir in deinem Auftrag.",
+    s3h:"Transport und Zoll", s3p:"Verschiffung nach Europa, Einfuhr in die Schweiz, Verzollung und Steuern – wir erledigen den Papierkram.",
+    s4h:"MFK und Übergabe", s4p:"Technische Anpassungen, Schweizer Typengenehmigung oder Einzelprüfung, Nummern – du übernimmst ein fahrbereites Auto.",
+    wh_h:"Warum ein Auto aus Japan?",
+    w1h:"Wenig Kilometer", w1p:"Japaner fahren kurze Strecken. Sportwagen mit 5–15’000 km nach mehreren Jahren sind normal, nicht die Ausnahme.",
+    w2h:"Gepflegter Zustand", w2p:"Strenge Prüfungen, trockene Garagen, lückenlose Servicehefte. Rost und Salz sind kaum ein Thema.",
+    w3h:"Bessere Preise", w3p:"Der japanische Markt hat ein grösseres Angebot an Exoten als die Schweiz – und oft tiefere Preise, selbst nach Transport und Zoll.",
+    ct_h:"Kontakt", ct_sub:"Schreib uns, ruf an oder komm vorbei – nach Terminabsprache, gerne auch abends oder am Wochenende.",
+    ct_op:"Betreiber", ct_op_v:"Lorin Schmutz – seit 2020 im Handel mit Exoten und Sportwagen", ct_mail:"Mail", ct_phone:"Telefon", ct_addr:"Adresse", ct_hours:"Besichtigung", ct_hours_v:"Nur mit Voranmeldung, auch Randzeiten",
+    ct_wa:"Per WhatsApp schreiben",
+    fo_name:"Name", fo_mail:"E-Mail", fo_car:"Welches Auto suchst du?", fo_msg:"Nachricht", fo_send:"Anfrage senden",
+    fo_ok:"Danke – wir melden uns innert 24 Stunden.",
+    im_h:"Impressum", im_p:"Japan Import ist eine Marke von Exotic Cars Schmutz, Einzelfirma mit Sitz in Liesberg BL, aktiv seit 2020. Verantwortlich für den Inhalt dieser Webseite: Lorin Schmutz.",
+    ft_l:"© 2026 Japan Import · eine Marke von Exotic Cars Schmutz, seit 2020", ft_imp:"Impressum",
+    ft:"Deutsch · English"
+  },
+  en: {
+    nav_cars:"Cars", nav_process:"How it works", nav_why:"Why Japan", nav_contact:"Contact",
+    h1:"Sports cars from Japan. Straight to Switzerland.",
+    lead:"Ferrari, McLaren, Porsche and more – sourced from the Japanese market, where cars have low mileage and are kept immaculate. We bring them over, handle customs and Swiss inspection, and hand them to you ready to drive on Swiss plates.",
+    cta_cars:"See the cars", cta_search:"Have us find your car",
+    f1b:"Japan + Europe", f1s:"Where our cars come from",
+    f2b:"All inclusive", f2s:"Shipping, customs, inspection",
+    f3b:"Trade-in", f3s:"We take your car in part exchange",
+    f4b:"Since 2020", f4s:"Exotic Cars Schmutz, Liesberg BL",
+    cars_h:"Cars for sale", cars_sub:"All cars customs-cleared with Swiss inspection. Prices on request.",
+    fl_all:"All", fl_jp:"From Japan", fl_eu:"From Europe",
+    tag_jp:"Japan import", tag_eu:"EU", img_ph:"Photo coming",
+    sp_lhd:"Left-hand drive", sp_manual:"Manual",
+    poa:"Price on request", ask:"Enquire",
+    cars_note:"Can’t see what you’re after? We have access to the major auctions and dealers in Japan. Tell us what you want – we’ll find it.",
+    pr_h:"How an import works", pr_sub:"Four steps, and nothing for you to worry about.",
+    s1h:"Find the car", s1p:"You tell us the model, budget and wishes. We search Japan and Europe and show you specific cars with history and condition reports.",
+    s2h:"Inspect and buy", s2p:"The car is inspected in person before purchase. Only once everything checks out do we buy on your behalf.",
+    s3h:"Shipping and customs", s3p:"Shipping to Europe, import into Switzerland, duties and taxes – we handle the paperwork.",
+    s4h:"Inspection and handover", s4p:"Technical adjustments, Swiss type approval or individual inspection, plates – you take over a car that’s ready to drive.",
+    wh_h:"Why a car from Japan?",
+    w1h:"Low mileage", w1p:"Japanese owners drive short distances. Sports cars with 5–15,000 km after several years are the norm, not the exception.",
+    w2h:"Immaculate condition", w2p:"Strict inspections, dry garages, complete service records. Rust and road salt are rarely an issue.",
+    w3h:"Better prices", w3p:"The Japanese market offers more exotics than Switzerland – and often lower prices, even after shipping and customs.",
+    ct_h:"Contact", ct_sub:"Write, call or drop by – by appointment, evenings and weekends are fine too.",
+    ct_op:"Operated by", ct_op_v:"Lorin Schmutz – trading exotic and sports cars since 2020", ct_mail:"Email", ct_phone:"Phone", ct_addr:"Address", ct_hours:"Viewings", ct_hours_v:"By appointment only, off-hours possible",
+    ct_wa:"Message on WhatsApp",
+    fo_name:"Name", fo_mail:"Email", fo_car:"Which car are you looking for?", fo_msg:"Message", fo_send:"Send enquiry",
+    fo_ok:"Thanks – we’ll get back to you within 24 hours.",
+    im_h:"Legal notice", im_p:"Japan Import is a brand of Exotic Cars Schmutz, a sole proprietorship based in Liesberg BL, Switzerland, active since 2020. Responsible for the content of this website: Lorin Schmutz.",
+    ft_l:"© 2026 Japan Import · a brand of Exotic Cars Schmutz, since 2020", ft_imp:"Legal notice",
+    ft:"Deutsch · English"
+  }
+};
+function setLang(l){
+  document.documentElement.lang = l;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent = T[l][el.dataset.i18n] ?? ""; });
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.lang===l)));
+  try{ localStorage.setItem("ji_lang", l); }catch(e){}
+}
+let lang = "de";
+try{ lang = localStorage.getItem("ji_lang") || (navigator.language.startsWith("en") ? "en" : "de"); }catch(e){}
+setLang(lang);
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+
+document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{
+  document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed","false"));
+  c.setAttribute("aria-pressed","true");
+  const f=c.dataset.filter;
+  document.querySelectorAll(".car").forEach(car=>car.classList.toggle("hidden", f!=="all" && car.dataset.origin!==f));
+}));
+
+document.getElementById("send").addEventListener("click",()=>{
+  document.getElementById("form").classList.add("sent");
+});
+</script>
+</body>
+</html>
