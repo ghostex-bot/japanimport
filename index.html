@@ -151,6 +151,10 @@ h2{font-variation-settings:"wdth" 110;font-weight:800;font-size:clamp(1.8rem,4vw
 .step h3{font-size:1.15rem;font-weight:800;margin-bottom:.25rem}
 .step p{color:var(--ink-2)}
 
+.notice{margin-top:2.2rem;border-left:4px solid var(--red);background:var(--paper-2);padding:1.1rem 1.3rem;border-radius:0 10px 10px 0;max-width:760px}
+.notice h3{font-size:1.15rem;font-weight:800;margin-bottom:.35rem}
+.notice p{color:var(--ink-2)}
+
 /* why */
 .why{display:grid;gap:1.25rem}
 @media (min-width:820px){.why{grid-template-columns:repeat(3,1fr)}}
@@ -289,6 +293,10 @@ footer{border-top:1px solid var(--line);padding:2rem 0 2.5rem;color:var(--ink-2)
         <div class="step"><div><h3 data-i18n="s3h"></h3><p data-i18n="s3p"></p></div></div>
         <div class="step"><div><h3 data-i18n="s4h"></h3><p data-i18n="s4p"></p></div></div>
       </div>
+      <aside class="notice">
+        <h3 data-i18n="au_h"></h3>
+        <p data-i18n="au_p"></p>
+      </aside>
     </div>
   </section>
 
@@ -371,6 +379,7 @@ const T = {
     s2h:"Prüfen und kaufen", s2p:"Vor dem Kauf wird das Auto vor Ort begutachtet. Erst wenn alles passt, kaufen wir in deinem Auftrag.",
     s3h:"Transport und Zoll", s3p:"Verschiffung nach Europa, Einfuhr in die Schweiz, Verzollung und Steuern – wir erledigen den Papierkram.",
     s4h:"MFK und Übergabe", s4p:"Technische Anpassungen, Schweizer Typengenehmigung oder Einzelprüfung, Nummern – du übernimmst ein fahrbereites Auto.",
+    au_h:"Bei Auktionen zählt Tempo", au_p:"Fotos und die komplette Fahrgestellnummer gibt es erst kurz vor der Auktion. In diesem Zeitfenster prüfen wir, ob das Auto in der Schweiz zugelassen werden kann und ob es sauber ist – und brauchen deine Zusage. Ohne Anzahlung bieten wir nicht. Auf dem offenen Markt (Händler) ist das entspannter.",
     wh_h:"Warum ein Auto aus Japan?",
     w1h:"Wenig Kilometer", w1p:"Japaner fahren kurze Strecken. Sportwagen mit 5–15’000 km nach mehreren Jahren sind normal, nicht die Ausnahme.",
     w2h:"Gepflegter Zustand", w2p:"Strenge Prüfungen, trockene Garagen, lückenlose Servicehefte. Rost und Salz sind kaum ein Thema.",
@@ -404,6 +413,7 @@ const T = {
     s2h:"Inspect and buy", s2p:"The car is inspected in person before purchase. Only once everything checks out do we buy on your behalf.",
     s3h:"Shipping and customs", s3p:"Shipping to Europe, import into Switzerland, duties and taxes – we handle the paperwork.",
     s4h:"Inspection and handover", s4p:"Technical adjustments, Swiss type approval or individual inspection, plates – you take over a car that’s ready to drive.",
+    au_h:"At auctions, speed matters", au_p:"Photos and the full chassis number only become available shortly before the auction. In that window we check whether the car can be registered in Switzerland and whether it is clean – and we need your go-ahead. Without a deposit, we don’t bid. On the open market (dealers) things are more relaxed.",
     wh_h:"Why a car from Japan?",
     w1h:"Low mileage", w1p:"Japanese owners drive short distances. Sports cars with 5–15,000 km after several years are the norm, not the exception.",
     w2h:"Immaculate condition", w2p:"Strict inspections, dry garages, complete service records. Rust and road salt are rarely an issue.",
