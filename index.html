@@ -139,6 +139,9 @@ h2{font-variation-settings:"wdth" 110;font-weight:800;font-size:clamp(1.8rem,4vw
 .lb .prev{left:.75rem;top:50%;transform:translateY(-50%)}
 .lb .next{right:.75rem;top:50%;transform:translateY(-50%)}
 .lb .n{position:absolute;bottom:max(1rem,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);color:#fff;font-size:.9rem;opacity:.8}
+.car[data-sold] .img img{filter:grayscale(.6) brightness(.8)}
+.car[data-sold] .price b{color:var(--ink-2);text-decoration:line-through;font-weight:600}
+.sold-band{position:absolute;left:-40px;top:22px;transform:rotate(-30deg);background:var(--ink);color:var(--paper);font-weight:800;font-size:.85rem;letter-spacing:.04em;padding:.35rem 3.2rem;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 .car .img .tag{position:absolute;left:.75rem;top:.75rem;background:var(--red);color:var(--red-ink);font-size:.75rem;font-weight:700;padding:.25rem .55rem;border-radius:4px}
 .car .img .tag.eu{background:var(--ink);color:var(--paper)}
 .car .body{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
@@ -252,7 +255,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 2.5rem;color:var(--ink-2)
         <div class="filters" role="group" aria-label="Filter">
           <button class="chip" type="button" data-filter="all" aria-pressed="true" data-i18n="fl_all"></button>
           <button class="chip" type="button" data-filter="jp" aria-pressed="false" data-i18n="fl_jp"></button>
-          <button class="chip" type="button" data-filter="eu" aria-pressed="false" data-i18n="fl_eu"></button>
+          <button class="chip" type="button" data-filter="sold" aria-pressed="false" data-i18n="fl_sold"></button>
         </div>
       </div>
 
@@ -387,7 +390,7 @@ const T = {
     f3b:"Eintausch", f3s:"Dein Auto nehmen wir in Zahlung",
     f4b:"Seit 2020", f4s:"Exotic Cars Schmutz, Liesberg BL",
     cars_h:"Aktuelle Angebote", cars_sub:"Alle Fahrzeuge verzollt und mit Schweizer MFK. Details und Fotos im AutoScout24-Inserat.",
-    fl_all:"Alle", fl_jp:"Aus Japan", fl_eu:"Weitere",
+    fl_all:"Alle", fl_jp:"Aus Japan", fl_sold:"Verkauft", sold:"Verkauft",
     tag_jp:"Japan-Import", tag_eu:"EU", img_ph:"Foto folgt", photos:"Fotos",
     sp_lhd:"Linkslenker", sp_manual:"Handschalter", sp_egear:"E-Gear", sp_auto:"Automat", as24:"Inserat auf AutoScout24", as24_all:"Alle Fahrzeuge auf AutoScout24",
     poa:"Preis auf Anfrage", ask:"Anfragen",
@@ -421,7 +424,7 @@ const T = {
     f3b:"Trade-in", f3s:"We take your car in part exchange",
     f4b:"Since 2020", f4s:"Exotic Cars Schmutz, Liesberg BL",
     cars_h:"Cars for sale", cars_sub:"All cars customs-cleared with Swiss inspection. Details and photos in the AutoScout24 listing.",
-    fl_all:"All", fl_jp:"From Japan", fl_eu:"Other",
+    fl_all:"All", fl_jp:"From Japan", fl_sold:"Sold", sold:"Sold",
     tag_jp:"Japan import", tag_eu:"EU", img_ph:"Photo coming", photos:"photos",
     sp_lhd:"Left-hand drive", sp_manual:"Manual", sp_egear:"E-Gear", sp_auto:"Automatic", as24:"Listing on AutoScout24", as24_all:"All cars on AutoScout24",
     poa:"Price on request", ask:"Enquire",
@@ -457,11 +460,23 @@ try{ lang = localStorage.getItem("ji_lang") || (navigator.language.startsWith("e
 setLang(lang);
 document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
 
+(function(){
+  const grid=document.getElementById("cars");
+  document.querySelectorAll(".car[data-sold]").forEach(car=>{
+    grid.appendChild(car);
+    const band=document.createElement("span"); band.className="sold-band"; band.setAttribute("data-i18n","sold"); car.querySelector(".img").appendChild(band);
+  });
+})();
+setLang(lang);
 document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{
   document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed","false"));
   c.setAttribute("aria-pressed","true");
   const f=c.dataset.filter;
-  document.querySelectorAll(".car").forEach(car=>car.classList.toggle("hidden", f!=="all" && car.dataset.origin!==f));
+  document.querySelectorAll(".car").forEach(car=>{
+    const sold=car.hasAttribute("data-sold");
+    let show = f==="all" ? true : f==="sold" ? sold : (car.dataset.origin===f && !sold);
+    car.classList.toggle("hidden", !show);
+  });
 }));
 
 const lb=document.getElementById("lb"), lbImg=lb.querySelector("img"), lbN=lb.querySelector(".n");
