@@ -140,8 +140,8 @@ h2{font-variation-settings:"wdth" 110;font-weight:800;font-size:clamp(1.8rem,4vw
 .lb .next{right:.75rem;top:50%;transform:translateY(-50%)}
 .lb .n{position:absolute;bottom:max(1rem,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);color:#fff;font-size:.9rem;opacity:.8}
 .car[data-sold] .img img{filter:grayscale(.6) brightness(.8)}
-.car[data-sold] .price b{color:var(--ink-2);text-decoration:line-through;font-weight:600}
-.sold-band{position:absolute;left:-40px;top:22px;transform:rotate(-30deg);background:var(--ink);color:var(--paper);font-weight:800;font-size:.85rem;letter-spacing:.04em;padding:.35rem 3.2rem;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.car[data-sold] .price b{color:var(--ink-2);font-weight:700}
+.sold-band{position:absolute;right:-44px;top:26px;transform:rotate(30deg);background:var(--ink);color:var(--paper);font-weight:800;font-size:.85rem;letter-spacing:.04em;padding:.35rem 3.2rem;box-shadow:0 2px 8px rgba(0,0,0,.3)}
 .car .img .tag{position:absolute;left:.75rem;top:.75rem;background:var(--red);color:var(--red-ink);font-size:.75rem;font-weight:700;padding:.25rem .55rem;border-radius:4px}
 .car .img .tag.eu{background:var(--ink);color:var(--paper)}
 .car .body{padding:1rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
@@ -290,6 +290,14 @@ footer{border-top:1px solid var(--line);padding:2rem 0 2.5rem;color:var(--ink-2)
             <h3>Mercedes-AMG G 63 Exclusive Edition</h3>
             <div class="spec"><span>2018</span><span>85’000 km</span><span>585 PS</span><span data-i18n="sp_auto"></span></div>
             <div class="price"><b>CHF 79’900</b><a href="https://www.autoscout24.ch/de/d/mercedes-benz-g-63-amg-exclusive-edition-speedsh-plus-7g-tronic-20921460" target="_blank" rel="noopener" data-i18n="as24"></a></div>
+          </div>
+        </article>
+        <article class="car" data-origin="jp" data-sold>
+          <button class="img has-photo" type="button" data-gallery="img/audi-s4-b5/1.jpg,img/audi-s4-b5/2.jpg,img/audi-s4-b5/3.jpg,img/audi-s4-b5/4.jpg,img/audi-s4-b5/5.jpg,img/audi-s4-b5/6.jpg" aria-label="Audi S4 Avant B5 – Fotos"><img src="img/audi-s4-b5/card.jpg" alt="Audi S4 Avant B5, silber, Frontansicht" loading="lazy"><span class="tag" data-i18n="tag_jp"></span><span class="count">6 <span data-i18n="photos"></span></span></button>
+          <div class="body">
+            <h3>Audi S4 Avant (B5)</h3>
+            <div class="spec"><span>1999</span><span>105’000 km</span><span>265 PS</span><span data-i18n="sp_manual"></span></div>
+            <div class="price"><b data-i18n="sold"></b></div>
           </div>
         </article>
       </div>
@@ -474,7 +482,7 @@ document.querySelectorAll(".chip").forEach(c=>c.addEventListener("click",()=>{
   const f=c.dataset.filter;
   document.querySelectorAll(".car").forEach(car=>{
     const sold=car.hasAttribute("data-sold");
-    let show = f==="all" ? true : f==="sold" ? sold : (car.dataset.origin===f && !sold);
+    let show = f==="all" ? true : f==="sold" ? sold : car.dataset.origin===f;
     car.classList.toggle("hidden", !show);
   });
 }));
